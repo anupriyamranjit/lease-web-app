@@ -1,0 +1,13 @@
+{
+    "name": "lease_web_app",
+    "version": "1.0.0",
+    "description": "Creating lease app",
+    "author": "Team",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "express": "^4.16.1"
+    }
+  }
