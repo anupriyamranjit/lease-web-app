@@ -5,9 +5,11 @@
     "author": "Team",
     "main": "app.js",
     "scripts": {
-      "start": "node app.js"
+        "preinstall": "npm i nodemon -g",
+        "start": "nodemon --legacy-watch app.js"
     },
     "dependencies": {
-      "express": "^4.16.1"
+        "express": "^4.16.1",
+        "nodemon": "^2.0.15"
     }
-  }
+}
