@@ -5,9 +5,10 @@
     "author": "Team",
     "main": "app.js",
     "scripts": {
-      "start": "node app.js"
+        "start": "node app.js"
     },
     "dependencies": {
-      "express": "^4.16.1"
+        "express": "^4.16.1",
+        "nodemon": "^2.0.15"
     }
-  }
+}
