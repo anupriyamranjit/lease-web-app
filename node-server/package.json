@@ -5,7 +5,6 @@
     "author": "Team",
     "main": "app.js",
     "scripts": {
-        "preinstall": "npm i nodemon -g",
         "start": "nodemon --legacy-watch app.js"
     },
     "dependencies": {
