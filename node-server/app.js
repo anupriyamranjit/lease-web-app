@@ -1,6 +1,8 @@
 'use strict';
 
 const express = require('express');
+const database = require('./database/database');
+
 
 // Constants
 const PORT = 8080;
