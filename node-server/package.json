@@ -9,6 +9,8 @@
     },
     "dependencies": {
         "express": "^4.16.1",
-        "nodemon": "^2.0.15"
+        "mongoose": "^6.1.4",
+        "nodemon": "^2.0.15",
+        "validator": "^13.7.0"
     }
 }
