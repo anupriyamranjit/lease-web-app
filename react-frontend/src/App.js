@@ -1,24 +1,19 @@
+
+import React, {useState} from "react";
 import './App.css';
-import React from 'react';
+import ReactDOM from "react-dom";
+
+import Map from "./Components/Map/Map";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Map />
     </div>
   );
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
 
 export default App;
