@@ -10,5 +10,10 @@
     "dependencies": {
         "express": "^4.16.1",
         "nodemon": "^2.0.15"
-    }
+    },
+    "browserslist": [
+        ">0.2%",
+       "not dead",
+       "not op_mini all"
+     ]
 }
