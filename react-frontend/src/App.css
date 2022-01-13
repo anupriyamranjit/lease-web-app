@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+<<<<<<< Updated upstream
+=======
+
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
+}
+>>>>>>> Stashed changes
