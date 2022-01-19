@@ -39915,22 +39915,22 @@
     },
     {
         "id": 1546,
-        "locationId": "torontobaystsupercharger",
-        "name": "Toronto - Bay St, ON",
+        "locationId": "universityofwaterloo",
+        "name": "University of Waterloo - Math Building",
         "status": "OPEN",
         "address": {
-            "street": "220 Yonge Street",
-            "city": "Toronto",
+            "street": "20 University Av W",
+            "city": "Waterloo",
             "state": "ON",
-            "zip": "M5B 2H1",
+            "zip": "N2L 3G1",
             "countryId": 101,
             "country": "Canada",
             "regionId": 100,
             "region": "North America"
         },
         "gps": {
-            "latitude": 43.655596,
-            "longitude": -79.382963
+            "latitude": 43.472543,
+            "longitude": -80.544489
         },
         "dateOpened": "2018-03-24",
         "stallCount": 16,

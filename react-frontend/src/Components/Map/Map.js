@@ -14,12 +14,12 @@ L.Icon.Default.mergeOptions({
 });
 
 
-const filteredStations = teslaData.filter(tesla => tesla.address.country === "Italy")
+const filteredStations = teslaData.filter(tesla => tesla.address.country === "Canada")
 function Map() {
   console.log(teslaData);
 
   return (
-    <MapContainer center={[42.58544, 13.257684]} zoom={6} scrollWheelZoom={true}>
+    <MapContainer center={[43.47221, -80.54474]} zoom={18} scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
