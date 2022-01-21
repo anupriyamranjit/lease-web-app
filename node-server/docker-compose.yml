@@ -6,3 +6,4 @@ services:
       - "3000:8080"
     volumes:
       - ./:/usr/src/app
+    container_name: node_server_lease_app
