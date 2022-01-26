@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Map.css';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import teslaData from "../../data/tesla-sites.json"
+import data from "../../data/locations.json"
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -14,26 +14,30 @@ L.Icon.Default.mergeOptions({
 });
 
 
-const filteredStations = teslaData.filter(tesla => tesla.address.country === "Canada")
+const filteredStations = data.filter(data => (data.utilitiesIncluded == true) && data.furnitureProvided == true)
 function Map() {
-  console.log(teslaData);
+  console.log(data);
 
   return (
-    <MapContainer center={[43.47221, -80.54474]} zoom={18} scrollWheelZoom={true}>
+    <MapContainer center={[43.47221, -80.54474]} zoom={15} scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {filteredStations.map(tesla => (
+      {filteredStations.map(location => (
         <Marker 
-        key = {tesla.id}
-        position={[ tesla.gps.latitude, tesla.gps.longitude]}>
+        key = {location.id}
+        position={[ location.gps.latitude, location.gps.longitude]}>
 
-          <Popup position={[ tesla.gps.latitude, tesla.gps.longitude]}>
+          <Popup position={[ location.gps.latitude, location.gps.longitude]}>
             <div>
-              <h2>{"Name:" + tesla.name}</h2>
-              <p>{"Status:" + tesla.status}</p>
+              <h2>{location.name}</h2>
+              <h3>{"Address: " + location.address.street}</h3>
+              <p>{"Bedrooms: " + location.bedrooms}</p>
+              <p>{"Washrooms: " + location.washrooms}</p>
+              <p>{"Other Amenities: Utility provided, Furniture provided"}</p>
+
             </div>
 
           </Popup>

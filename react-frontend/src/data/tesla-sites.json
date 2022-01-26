@@ -12,7 +12,7 @@
             "countryId": 137,
             "country": "South Korea",
             "regionId": 102,
-            "region": "Asia Pacific"
+            "bedrooms": "Asia Pacific"
         },
         "gps": {
             "latitude": 36.909503,
@@ -83118,22 +83118,22 @@
     },
     {
         "id": 309,
-        "locationId": "toronto",
-        "name": "Toronto (SC), ON",
+        "locationId": "UWP",
+        "name": "Waterloo - UWP",
         "status": "OPEN",
         "address": {
-            "street": "1325 Lawrence Ave East",
-            "city": "Toronto",
+            "street": "UWP",
+            "city": "Waterloo",
             "state": "ON",
-            "zip": "M3A 1C6",
+            "zip": "N2l 3E8",
             "countryId": 101,
             "country": "Canada",
             "regionId": 100,
             "region": "North America"
         },
         "gps": {
-            "latitude": 43.740222,
-            "longitude": -79.322389
+            "latitude":  43.47211836371329,
+            "longitude": -80.5352039547346
         },
         "dateOpened": "2014-08-26",
         "stallCount": 8,
@@ -95958,22 +95958,22 @@
     },
     {
         "id": 3493,
-        "locationId": "torontolibertyvillagesupercharger",
-        "name": "Toronto - Lakeshore Blvd W, ON",
+        "locationId": "Lazaridis",
+        "name": "Lazaridis",
         "status": "OPEN",
         "address": {
-            "street": "111 Princes Blvd Rd",
-            "city": "Toronto",
+            "street": "Lazaridis",
+            "city": "Waterloo",
             "state": "ON",
-            "zip": "M6K 3C3",
+            "zip": "N2L 3C7",
             "countryId": 101,
             "country": "Canada",
             "regionId": 100,
             "region": "North America"
         },
         "gps": {
-            "latitude": 43.632596,
-            "longitude": -79.411652
+            "latitude":  43.47533733323873,
+            "longitude": -80.52940508737639
         },
         "dateOpened": "2021-07-22",
         "stallCount": 12,

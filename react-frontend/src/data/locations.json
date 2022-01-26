@@ -1,0 +1,76 @@
+[
+    {
+        "id": 1,
+        "locationId": "universityOfWaterloo",
+        "name": "UWP Hall",
+        "status": "OPEN",
+        "address": {
+            "street": "159 University Avenue",
+            "city": "Waterloo",
+            "state": "ON",
+            "zip": "N2l 3E8",
+            "countryId": 101,
+            "country": "Canada",
+            "regionId": 100,
+            "region": "North America"
+        },
+        "gps": {
+            "latitude":  43.47211836371329,
+            "longitude": -80.5352039547346
+        },
+        "bedrooms": 4,
+        "washrooms": 2,
+        "utilitiesIncluded": true,
+        "furnitureProvided": true
+    
+    },
+    {
+        "id": 2,
+        "locationId": "wilfridLaurierUniversity",
+        "name": "Lazaridis",
+        "status": "OPEN",
+        "address": {
+            "street": "64 University Av W",
+            "city": "Waterloo",
+            "state": "ON",
+            "zip": "N2L 3C7",
+            "countryId": 101,
+            "country": "Canada",
+            "regionId": 100,
+            "region": "North America"
+        },
+        "gps": {
+            "latitude":  43.47533733323873,
+            "longitude": -80.52940508737639
+        },
+        "bedrooms": 4,
+        "washrooms": 2,
+            "utilitiesIncluded": true,
+            "furnitureProvided": true
+    },
+    {
+        "id": 3,
+        "locationId": "universityOfWaterloo",
+        "name": "University of Waterloo - Math Building",
+        "status": "OPEN",
+        "address": {
+            "street": "200 University Av W",
+            "city": "Waterloo",
+            "state": "ON",
+            "zip": "N2L 3G1",
+            "countryId": 101,
+            "country": "Canada",
+            "regionId": 100,
+            "region": "North America"
+        },
+        "gps": {
+            "latitude": 43.472543,
+            "longitude": -80.544489
+        },
+        "bedrooms": 4,
+        "washrooms": 2,
+        "utilitiesIncluded": true,
+        "furnitureProvided": false
+        
+    }
+]
