@@ -14,10 +14,8 @@ L.Icon.Default.mergeOptions({
 });
 
 
-const filteredStations = data.filter(data => (data.utilitiesIncluded == true) && data.furnitureProvided == true)
+const filteredStations = data.filter(data => data.address.country == "Canada")
 function Map() {
-  console.log(data);
-
   return (
     <MapContainer center={[43.47221, -80.54474]} zoom={15} scrollWheelZoom={true}>
       <TileLayer
@@ -36,7 +34,9 @@ function Map() {
               <h3>{"Address: " + location.address.street}</h3>
               <p>{"Bedrooms: " + location.bedrooms}</p>
               <p>{"Washrooms: " + location.washrooms}</p>
-              <p>{"Other Amenities: Utility provided, Furniture provided"}</p>
+              <h3>{"Other Amenities"}</h3>
+              <li>{ location.furnitureProvided ? "Furniture Provided" : "No Furniture Provided"}</li>
+              <li>{ location.utilitiesIncluded ? "Utilities Provided" : "No Utilities Provided"}</li>
 
             </div>
 

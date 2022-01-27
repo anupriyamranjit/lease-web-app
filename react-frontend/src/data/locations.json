@@ -46,7 +46,7 @@
         "bedrooms": 4,
         "washrooms": 2,
             "utilitiesIncluded": true,
-            "furnitureProvided": true
+            "furnitureProvided": false
     },
     {
         "id": 3,
