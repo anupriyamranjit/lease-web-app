@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Map.css';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import teslaData from "../../data/tesla-sites.json"
+import data from "../../data/locations.json"
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -14,26 +14,35 @@ L.Icon.Default.mergeOptions({
 });
 
 
-const filteredStations = teslaData.filter(tesla => tesla.address.country === "Italy")
+const filteredStations = data.filter(data => data.address.country === "Canada")
 function Map() {
-  console.log(teslaData);
-
   return (
-    <MapContainer center={[42.58544, 13.257684]} zoom={6} scrollWheelZoom={true}>
+    <MapContainer center={[43.47221, -80.54474]} zoom={15} scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {filteredStations.map(tesla => (
+      {filteredStations.map(location => (
         <Marker 
-        key = {tesla.id}
-        position={[ tesla.gps.latitude, tesla.gps.longitude]}>
-
-          <Popup position={[ tesla.gps.latitude, tesla.gps.longitude]}>
+        key = {location.id}
+        position={[ location.gps.latitude, location.gps.longitude]}>
+          <Popup position={[ location.gps.latitude, location.gps.longitude]}>
             <div>
-              <h2>{"Name:" + tesla.name}</h2>
-              <p>{"Status:" + tesla.status}</p>
+              <h2>{location.name}</h2>
+              <h3>{"Address: " + location.address.street}</h3>
+              <p>{"Bedrooms: " + location.bedrooms}</p>
+              <p>{"Washrooms: " + location.washrooms}</p>
+              <h3>{"Other Amenities"}</h3>
+              <li>{ location.other.furnitureProvided ? "Furniture Provided" : "No Furniture Provided"}</li>
+              <li>{ location.other.utilitiesIncluded ? "Utilities Provided" : "No Utilities Provided"}</li>
+              {/* Added optional chaining for the other block
+              Thought this might be a good way to list the other amenities since not every location will
+              have the same number of amenities provided. We can even use Nullish Coalescing if the field 
+              will be null and we want to return something in that case. Once we finalize the structure 
+              of the data and the types, this will be easier to determine */}
+              <li>{ location.other?.other_0 }</li>
+              <li>{ location.other?.other_1 }</li>
             </div>
 
           </Popup>
