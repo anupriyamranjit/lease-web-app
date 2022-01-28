@@ -14,7 +14,7 @@ L.Icon.Default.mergeOptions({
 });
 
 
-const filteredStations = data.filter(data => data.address.country == "Canada")
+const filteredStations = data.filter(data => data.address.country === "Canada")
 function Map() {
   return (
     <MapContainer center={[43.47221, -80.54474]} zoom={15} scrollWheelZoom={true}>
@@ -27,7 +27,6 @@ function Map() {
         <Marker 
         key = {location.id}
         position={[ location.gps.latitude, location.gps.longitude]}>
-
           <Popup position={[ location.gps.latitude, location.gps.longitude]}>
             <div>
               <h2>{location.name}</h2>
@@ -35,9 +34,15 @@ function Map() {
               <p>{"Bedrooms: " + location.bedrooms}</p>
               <p>{"Washrooms: " + location.washrooms}</p>
               <h3>{"Other Amenities"}</h3>
-              <li>{ location.furnitureProvided ? "Furniture Provided" : "No Furniture Provided"}</li>
-              <li>{ location.utilitiesIncluded ? "Utilities Provided" : "No Utilities Provided"}</li>
-
+              <li>{ location.other.furnitureProvided ? "Furniture Provided" : "No Furniture Provided"}</li>
+              <li>{ location.other.utilitiesIncluded ? "Utilities Provided" : "No Utilities Provided"}</li>
+              {/* Added optional chaining for the other block
+              Thought this might be a good way to list the other amenities since not every location will
+              have the same number of amenities provided. We can even use Nullish Coalescing if the field 
+              will be null and we want to return something in that case. Once we finalize the structure 
+              of the data and the types, this will be easier to determine */}
+              <li>{ location.other?.other_0 }</li>
+              <li>{ location.other?.other_1 }</li>
             </div>
 
           </Popup>
