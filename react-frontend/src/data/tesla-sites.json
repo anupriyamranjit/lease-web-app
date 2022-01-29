@@ -1,5 +1,12 @@
 [
     {
+        "gps": {
+            "latitude": 43.4723,
+            "longitude": 80.5449
+        },
+        "bathroom": 4
+},
+    {
         "id": 2215,
         "locationId": "dangjinsupercharger",
         "name": "Dangjin, South Korea",
