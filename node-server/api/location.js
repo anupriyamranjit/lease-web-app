@@ -80,101 +80,50 @@ router.route('/update/:id').patch(async (req, res ) => {
         const parkingPrice = req.body.other.parkingPrice;
         const furnitureIncluded = req.body.other.furnitureIncluded;
         const other = req.body.other.other;
-        const available = req.body.available;
         const id = req.params.id;
 
         // Variables 
-        let findLocations;
         let foundLocation = await Location.findById(id);
 
-        // Added a boolean called available in schema. 
-        // If a location is not available, then we don't need to update it (delete it instead)
-        if (available == false) {
-            foundLocation.remove();
+        if ( foundLocation != null ) {
+            console.log("Error: Location ID does not exist")
         } else {
-        // Location is available for rental and can be updated 
-        findLocation = await Location.find(
-            { 
-                "name": name,
-                "description": description,
-                "numberOfBathrooms": numberOfBathrooms,
-                "numberOfBedrooms": numberOfBedrooms,
-                "available": available,
-                "address": {
-                    "streetNumber": streetNumber,
-                    "streetName": streetName,
-                    "city": city,
-                    "province": province,
-                    "postalCode": postalCode,
-                    "latitude": latitide,
-                    "longtitude": longtitude,
-                },
-                "price": price,
-                "utilities": {
-                    "hydroIncluded": hydroIncluded,
-                    "hydroPrice": hydroPrice,
-                    "electricalIncluded": electricalIncluded,
-                    "electricalPrice": electricalPrice,
-                    "laundryIncluded": laundryIncluded,
-                    "laundryPrice": laundryPrice,
-                    "internetIncluded": internetIncluded,
-                    "internetPrice": internetPrice,
-                    "totalUtilitiesPrice": totalUtilitiesPrice
-                },
-                "other": {
-                    "hasGym": hasGym,
-                    "hasBikeRake": hasBikeRake,
-                    "hasParking": hasParking,
-                    "parkingPrice": parkingPrice,
-                    "furnitureIncluded": furnitureIncluded,
-                    "other": other
-                }
-            });
-            if (findLocations.length == 0) {
-                foundLocation.name = name;
-                foundLocation.description = description;
-                foundLocation.numberOfBathrooms = numberOfBathrooms;
-                foundLocation.numberOfBedrooms = numberOfBedrooms;
-                foundLocation.available = available;
-                foundLocation.address.streetNumber = streetNumber;
-                foundLocation.address.streetName = streetName;
-                foundLocation.address.city = city;
-                foundLocation.address.province = province;
-                foundLocation.address.postalCode = postalCode;
-                foundLocation.address.latitide = latitude;
-                foundLocation.address.longtitude = longtitude;
-                foundLocation.price = price;
-                foundLocation.utilities.hydroIncluded = hydroIncluded;
-                await foundLocation.save();
-            } else {
-                if (findLocations[0].id.toString() != id) {
-                    findLocations[0].available = available;
-                    await findLocations[0].save();
-                    await foundLocation.remove();
-                } else {
-                    foundLocation.name = name;
-                    foundLocation.description = description;
-                    foundLocation.numberOfBathrooms = numberOfBathrooms;
-                    foundLocation.numberOfBedrooms = numberOfBedrooms;
-                    foundLocation.available = available;
-                    foundLocation.address.streetNumber = streetNumber;
-                    foundLocation.address.streetName = streetName;
-                    foundLocation.address.city = city;
-                    foundLocation.address.province = province;
-                    foundLocation.address.postalCode = postalCode;
-                    foundLocation.address.latitide = latitude;
-                    foundLocation.address.longtitude = longtitude;
-                    foundLocation.price = price;
-                    foundLocation.utilities.hydroIncluded = hydroIncluded;
-                    await foundLocation.save();
-                }
-            }
+            console.log("Location ID was found")
+            foundLocation.name = name;
+            foundLocation.description = description;
+            foundLocation.numberOfBathrooms = numberOfBathrooms;
+            foundLocation.numberOfBedrooms = numberOfBedrooms;
+            foundLocation.available = available;
+            foundLocation.address.streetNumber = streetNumber;
+            foundLocation.address.streetName = streetName;
+            foundLocation.address.city = city;
+            foundLocation.address.province = province;
+            foundLocation.address.postalCode = postalCode;
+            foundLocation.address.latitide = latitude;
+            foundLocation.address.longtitude = longtitude;
+            foundLocation.price = price;
+            foundLocation.utilities.hydroIncluded = hydroIncluded;
+            foundLocation.utilities.hydroPrice = hydroPrice;
+            foundLocation.utilities.electricalIncluded = electricalIncluded;
+            foundLocation.utilities.electricalPrice = electricalPrice;
+            foundLocation.utilities.internetIncluded = internetIncluded;
+            foundLocation.utilities.internetPrice = internetPrice;
+            foundLocation.utilities.laundryIncluded = laundryIncluded;
+            foundLocation.utilities.laundryPrice = laundryPrice;
+            foundLocation.utilities.totalUtilitiesPrice = totalUtilitiesPrice;
+            foundLocation.other.hasGym = hasGym;
+            foundLocation.other.hasBikeRake = hasBikeRake;
+            foundLocation.other.hasParking = hasParking;
+            foundLocation.other.parkingPrice = parkingPrice;
+            foundLocation.other.furnitureIncluded = furnitureIncluded;
+            foundLocation.other.other = other;
+            await foundLocation.save();
             console.log(`Location with if ${id} is updated`);
         }
+        
     } catch (e) {
         res.status(400).json("Error: " + e);
     }
 });
 
-
-  module.exports = router
+module.exports = router

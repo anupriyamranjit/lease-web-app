@@ -43,7 +43,6 @@ const test = new Location ( {
             description: 'Waterloo Residence Builing',
             numberOfBathrooms: 0,
             numberOfBedrooms:0,
-            available: true,
             address: {
                 streetNumber: 165,
                 streetName: 'University Avenue W',
