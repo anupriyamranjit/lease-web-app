@@ -4,46 +4,26 @@ const router = express.Router();
 
 // GET Route: All Locations
 router.route('/').get(async (req, res) => {
+    const { page = 1, limit = 10 } = req.query;
     try {
-        await Location.create({
-            name: 'CMH',
-            description: 'Waterloo Residence Builing',
-            numberOfBathrooms: 0,
-            numberOfBedrooms:0,
-            address: {
-                streetNumber: 165,
-                streetName: 'University Avenue W',
-                city: 'Waterloo',
-                province: 'Ontario',
-                postalCode: 'N2L 3E8',
-                latitude: 43.49041374273173,
-                longtitude:  -80.54281045857041,
-            },
-            price: 450,
-            utilities: {
-                hydroIncluded: true,
-                hydroPrice: 45,
-                electricalIncluded: false,
-                electricalPrice: null,
-                laundryIncluded: true,
-                laundryPrice: 23,
-                internetIncluded: false,
-                internetPrice: null,
-                totalUtilitiesPrice: 68
-            },
-            other: {
-                hasGym: true,
-                hasBikeRake: true,
-                hasParking: false,
-                parkingPrice: 0,
-                furnitureIncluded: true,
-                other: 'Hi, welcome to CMH'
-            }
-        })
-        const location = await Location.find();
+        const location = await Location.find()
+        .limit(limit)
+        .skip((page-1) * limit)
+        .exec()
         res.json(location);
     } catch(e){
         res.status(400).json("Error: " + e);
+    }
+  })
+
+
+  router.route('/:id').get(async (req, res) => {
+      const { id } = req.params
+    try {
+        const location = await Location.findById(id);
+        res.json(location);
+    } catch(e){
+        res.status(404).json("Error: " + e);
     }
   })
 

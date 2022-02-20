@@ -2,7 +2,6 @@
 
 const express = require('express');
 const database = require('./database/database');
-const testRouter = require('./api/test');
 const locationRouter = require('./api/location')
 
 
@@ -12,10 +11,6 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
-app.get('/', (req, res) => {
-  res.send('Hello World 7');
-});
-app.use('/api/test', testRouter);
 app.use('/api/location', locationRouter);
 
 
