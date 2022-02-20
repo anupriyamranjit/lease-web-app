@@ -53,24 +53,25 @@ router.route('/').get(async (req, res) => {
 router.route('/update/:id').patch(async (req, res ) => {
     try {
         // Constants
+        // Constants
         const name = req.body.name;
-        const descrption = req.body.description;
+        const description = req.body.description;
         const numberOfBathrooms = req.body.numberOfBathrooms
         const numberOfBedrooms = req.body.numberOfBathrooms;
         const streetNumber = req.body.address.streetNumber;
         const streetName = req.body.address.streetName;
         const city = req.body.address.city;
         const province = req.body.address.province;
-        const postalCode = req.body.postalCode;
-        const latitide = req.body.latitide;
-        const longtitude = req.body.longtitude;
+        const postalCode = req.body.address.postalCode;
+        const latitude = req.body.address.latitude;
+        const longtitude = req.body.address.longtitude;
         const price = req.body.price;
         const hydroIncluded = req.body.utilities.hydroIncluded;
         const hydroPrice = req.body.utilities.hydroPrice
         const electricalIncluded = req.body.utilities.electricalIncluded;
         const electricalPrice = req.body.utilities.electricalPrice;
         const laundryIncluded = req.body.utilities.laundryIncluded;
-        const laundryPrice = req.body.utilities.laundryPrice; 
+        const laundryPrice = req.body.utilities.laundryPrice;
         const internetIncluded = req.body.utilities.internetIncluded;
         const internetPrice = req.body.utilities.internetPrice;
         const totalUtilitiesPrice = req.body.utilities.totalUtilitiesPrice;
@@ -80,8 +81,6 @@ router.route('/update/:id').patch(async (req, res ) => {
         const parkingPrice = req.body.other.parkingPrice;
         const furnitureIncluded = req.body.other.furnitureIncluded;
         const other = req.body.other.other;
-        const id = req.params.id;
-
         // Variables 
         let foundLocation = await Location.findById(id);
 
@@ -119,8 +118,7 @@ router.route('/update/:id').patch(async (req, res ) => {
             foundLocation.other.other = other;
             await foundLocation.save();
             console.log(`Location with if ${id} is updated`);
-        }
-        
+        } 
     } catch (e) {
         res.status(400).json("Error: " + e);
     }
