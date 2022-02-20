@@ -117,7 +117,7 @@ router.route('/update/:id').patch(async (req, res ) => {
             foundLocation.other.furnitureIncluded = furnitureIncluded;
             foundLocation.other.other = other;
             await foundLocation.save();
-            console.log(`Location with if ${id} is updated`);
+            console.log(`Location with id ${id} is updated`);
         } 
     } catch (e) {
         res.status(400).json("Error: " + e);
