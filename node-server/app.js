@@ -2,9 +2,8 @@
 
 const express = require('express');
 const database = require('./database/database');
-const testRouter = require('./api/test');
+const testRouter = require('./api/sample');
 const locationRouter = require('./api/location')
-
 
 // Constants
 const PORT = 8080;
@@ -17,7 +16,6 @@ app.get('/', (req, res) => {
 });
 app.use('/api/test', testRouter);
 app.use('/api/location', locationRouter);
-
 
 
 app.listen(PORT, HOST);
