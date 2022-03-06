@@ -53,34 +53,21 @@ router.route('/').get(async (req, res) => {
 router.route('/update/:id').patch(async (req, res ) => {
     try {
         // Constants
-        // Constants
-        const name = req.body.name;
-        const description = req.body.description;
-        const numberOfBathrooms = req.body.numberOfBathrooms
-        const numberOfBedrooms = req.body.numberOfBathrooms;
-        const streetNumber = req.body.address.streetNumber;
-        const streetName = req.body.address.streetName;
-        const city = req.body.address.city;
-        const province = req.body.address.province;
-        const postalCode = req.body.address.postalCode;
-        const latitude = req.body.address.latitude;
-        const longtitude = req.body.address.longtitude;
-        const price = req.body.price;
-        const hydroIncluded = req.body.utilities.hydroIncluded;
-        const hydroPrice = req.body.utilities.hydroPrice
-        const electricalIncluded = req.body.utilities.electricalIncluded;
-        const electricalPrice = req.body.utilities.electricalPrice;
-        const laundryIncluded = req.body.utilities.laundryIncluded;
-        const laundryPrice = req.body.utilities.laundryPrice;
-        const internetIncluded = req.body.utilities.internetIncluded;
-        const internetPrice = req.body.utilities.internetPrice;
-        const totalUtilitiesPrice = req.body.utilities.totalUtilitiesPrice;
-        const hasGym = req.body.other.hasGym;
-        const hasBikeRake = req.body.other.hasBikeRake;
-        const hasParking = req.body.other.hasParking;
-        const parkingPrice = req.body.other.parkingPrice;
-        const furnitureIncluded = req.body.other.furnitureIncluded;
-        const other = req.body.other.other;
+        const {
+            name, description, numberOfBathrooms, numberOfBedrooms,
+            address: { 
+                streetNumber, streetName, city, province, postalCode, latitude, longtitude 
+            },
+            price,
+            utilities: { 
+                hydroIncluded, hydroPrice, electricalIncluded, electricalPrice, laundryIncluded,
+                laundryPrice, internetIncluded, internetPrice, totalUtilitiesPrice 
+            },
+            other: { 
+                hasGym, hasBikeRake, hasParking, parkingPrice, furnitureIncluded, other
+             }
+        } = req.body;
+      
         // Variables 
         let foundLocation = await Location.findById(id);
 
