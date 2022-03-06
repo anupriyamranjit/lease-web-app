@@ -86,7 +86,7 @@ router.route('/addLocation').post(async (req, res) => {
                     hydroIncluded: hydroIncluded,
                     hydroPrice: hydroPrice,
                     electricalIncluded: electricalIncluded,
-                    electricalPrice: electricalPricel,
+                    electricalPrice: electricalPrice,
                     laundryIncluded: laundryIncluded,
                     laundryPrice: laundryPrice,
                     internetIncluded: internetIncluded,
