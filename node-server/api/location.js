@@ -16,7 +16,7 @@ router.route('/').get(async (req, res) => {
     }
 })
 
-
+// GET Route: Single Location
 router.route('/:id').get(async (req, res) => {
     const { id } = req.params
     try {
@@ -94,7 +94,7 @@ router.route('/addLocation').post(async (req, res) => {
 })
 
 // DELETE Route: Delete Location
-router.route('/:id').delete(async (req, res) => {
+router.route('/delete/:id').delete(async (req, res) => {
     try {
         // Constants
         const { id } = req.params;
@@ -109,7 +109,7 @@ router.route('/:id').delete(async (req, res) => {
     }
 })
 
-// Patch Route: Single Location
+// PATCH Route: Update Single Location
 router.route('/update/:id').patch(async (req, res) => {
     try {
         // Constants
@@ -127,6 +127,8 @@ router.route('/update/:id').patch(async (req, res) => {
                 hasGym, hasBikeRake, hasParking, parkingPrice, furnitureIncluded, other
             }
         } = req.body;
+
+        const { id } = req.params;
 
         // Variables 
         let foundLocation = await Location.findById(id);
