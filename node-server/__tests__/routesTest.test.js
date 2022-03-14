@@ -108,7 +108,7 @@ describe("DELETE Routes", () => {
 
     it('DELETE Location', async () => {
         const loc = await Location.create(testLoc)
-        const res = await request(app).delete(`/api/location/${loc._id}`)
+        const res = await request(app).delete(`/api/location/delete/${loc._id}`)
         expect(res.statusCode).toEqual(200)
         const findLoc = await Location.findById(loc._id)
         expect(findLoc).toBeNull()
