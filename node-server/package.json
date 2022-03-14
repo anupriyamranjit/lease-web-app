@@ -6,7 +6,9 @@
     "main": "app.js",
     "scripts": {
         "start": "nodemon --legacy-watch app.js",
-        "test": "cross-env NODE_ENV=test jest"
+        "test": "cross-env NODE_ENV=test jest",
+        "test:watch": "cross-env NODE_ENV=test jest --watch",
+        "test:detect": "cross-env NODE_ENV=test jest --detectOpenHandles"
     },
     "dependencies": {
         "cross-env": "^7.0.3",
