@@ -1,6 +1,11 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+mongoose.set('debug', true);
 
-const schema = new mongoose.Schema({ name: 'string', size: 'string' });
-const Test = mongoose.model('Test', schema);
+const testSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    quantity: { type: Number, required: true }
+});
 
-module.exports = Test
+const Test = mongoose.model('Test', testSchema);
+
+module.exports = Test;
