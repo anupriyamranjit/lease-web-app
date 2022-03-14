@@ -5,13 +5,21 @@
     "author": "Team",
     "main": "app.js",
     "scripts": {
-        "start": "nodemon --legacy-watch app.js"
+        "start": "nodemon --legacy-watch app.js",
+        "test": "cross-env NODE_ENV=test jest",
+        "test:watch": "cross-env NODE_ENV=test jest --watch",
+        "test:detect": "cross-env NODE_ENV=test jest --detectOpenHandles"
     },
     "dependencies": {
+        "cross-env": "^7.0.3",
         "dotenv": "^10.0.0",
         "express": "^4.16.1",
         "mongoose": "^6.1.4",
         "nodemon": "^2.0.15",
         "validator": "^13.7.0"
+    },
+    "devDependencies": {
+        "jest": "^27.5.1",
+        "supertest": "^6.2.2"
     }
 }
