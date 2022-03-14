@@ -66,7 +66,7 @@ router.route('/addLocation').post(async (req, res) => {
 
         // Create a new location if a location with the same name does not exist
         findLocation = await Location.find({ "name": name });
-        if (findLoc.length === 0) {
+        if (findLocation.length === 0) {
             newLocation = new Location({
                 name: name,
                 description: description,
