@@ -131,46 +131,48 @@ router.route('/update/:id').patch(async (req, res) => {
         const { id } = req.params;
 
         // Variables 
-        let foundLocation = await Location.find({"name": name});
+    
+        let foundLocation = await Location.findById(id);
+        res.json(`Location with id ${id} is updated`);
 
-        if (foundLocation != null) {
-            console.log("Error: Location name does not exist")
+        if (foundLocation === null) {
+            throw "Error: Location name does not exist";
         } else {
             console.log("Location name was found")
-            foundLocation.name = name;
-            foundLocation.description = description;
-            foundLocation.numberOfBathrooms = numberOfBathrooms;
-            foundLocation.numberOfBedrooms = numberOfBedrooms;
-            foundLocation.available = available;
-            foundLocation.address.streetNumber = streetNumber;
-            foundLocation.address.streetName = streetName;
-            foundLocation.address.city = city;
-            foundLocation.address.province = province;
-            foundLocation.address.postalCode = postalCode;
-            foundLocation.address.latitude = latitude;
-            foundLocation.address.longtitude = longtitude;
-            foundLocation.price = price;
-            foundLocation.utilities.hydroIncluded = hydroIncluded;
-            foundLocation.utilities.hydroPrice = hydroPrice;
-            foundLocation.utilities.electricalIncluded = electricalIncluded;
-            foundLocation.utilities.electricalPrice = electricalPrice;
-            foundLocation.utilities.internetIncluded = internetIncluded;
-            foundLocation.utilities.internetPrice = internetPrice;
-            foundLocation.utilities.laundryIncluded = laundryIncluded;
-            foundLocation.utilities.laundryPrice = laundryPrice;
-            foundLocation.utilities.totalUtilitiesPrice = totalUtilitiesPrice;
+            foundLocation.name = name,
+            foundLocation.description = description,
+            foundLocation.numberOfBathrooms = numberOfBathrooms,
+            foundLocation.numberOfBedrooms = numberOfBedrooms,
+            foundLocation.address.streetNumber = streetNumber,
+            foundLocation.address.streetName = streetName,
+            foundLocation.address.city = city,
+            foundLocation.address.province = province,
+            foundLocation.address.postalCode = postalCode,
+            foundLocation.address.latitude = latitude,
+            foundLocation.address.longtitude = longtitude,
+            foundLocation.price = price,
+            foundLocation.utilities.hydroIncluded = hydroIncluded,
+            foundLocation.utilities.hydroPrice = hydroPrice,
+            foundLocation.utilities.electricalIncluded = electricalIncluded,
+            foundLocation.utilities.electricalPrice = electricalPrice,
+            foundLocation.utilities.laundryIncluded = laundryIncluded,
+            foundLocation.utilities.laundryPrice = laundryPrice,
+            foundLocation.utilities.internetIncluded = internetIncluded,
+            foundLocation.utilities.internetPrice = internetPrice,
+            foundLocation.utilities.totalUtilitiesPrice = totalUtilitiesPrice,
             foundLocation.other.hasGym = hasGym;
             foundLocation.other.hasBikeRake = hasBikeRake;
             foundLocation.other.hasParking = hasParking;
             foundLocation.other.parkingPrice = parkingPrice;
             foundLocation.other.furnitureIncluded = furnitureIncluded;
             foundLocation.other.other = other;
+            console.log("Before the save");
+            console.log(foundLocation.price, price);
             await foundLocation.save();
-            console.log(`Location with id ${id} is updated`);
         }
     } catch (e) {
-        res.status(400).json("Error: " + e);
-    }
+        res.status(404).json("Error: " + e);
+    } 
 });
 
 module.exports = router

@@ -74,6 +74,41 @@ const testLoc2 = {
         other: 'Hi, welcome to CMH'
     }
 }
+const testLoc3 = {
+    name: 'Math Building',
+    description: 'Waterloo Residence Builing',
+    numberOfBathrooms: 0,
+    numberOfBedrooms: 0,
+    address: {
+        streetNumber: 165,
+        streetName: 'University Avenue W',
+        city: 'Waterloo',
+        province: 'Ontario',
+        postalCode: 'N2L 3E8',
+        latitude: 43.49041374273173,
+        longtitude: -80.54281045857041,
+    },
+    price: 1000,
+    utilities: {
+        hydroIncluded: true,
+        hydroPrice: 45,
+        electricalIncluded: false,
+        electricalPrice: null,
+        laundryIncluded: true,
+        laundryPrice: 23,
+        internetIncluded: false,
+        internetPrice: null,
+        totalUtilitiesPrice: 68
+    },
+    other: {
+        hasGym: true,
+        hasBikeRake: true,
+        hasParking: false,
+        parkingPrice: 0,
+        furnitureIncluded: true,
+        other: 'Hi, welcome to CMH'
+    }
+}
 
 describe("GET Routes", () => {
     beforeAll(async () => {
@@ -195,14 +230,13 @@ describe("PATCH Routes", () => {
                 other: 'Hi, welcome to CMH'
             }
         }
-        const res = await request(app).patch(`/api/location/update/${item2._id}`).send(updatedData)
+        const res = await request(app).patch(`/api/location/update/${item1._id}`).send(updatedData)
         expect(res.statusCode).toEqual(200)
-        find = await Inventory.findById(item1._id);
-        expect(find.price).toEqual(550)
+        find = await Location.findById(item2._id);
+        expect(find.price).toEqual(item2.price)
     })
     it("Patch Name and No Merge", async () => {
         const item1 = await Location.create(testLoc);
-
         updatedData = {
             name: 'CMH',
             description: 'Waterloo Residence Builing',
@@ -217,7 +251,7 @@ describe("PATCH Routes", () => {
                 latitude: 43.49041374273173,
                 longtitude: -80.54281045857041,
             },
-            price: item2.price,
+            price: item1.price,
             utilities: {
                 hydroIncluded: true,
                 hydroPrice: 45,
@@ -240,7 +274,7 @@ describe("PATCH Routes", () => {
         }
         const res = await request(app).patch(`/api/location/update/${item1._id}`).send(updatedData)
         expect(res.statusCode).toEqual(200)
-        find = await Inventory.findById(item1._id);
-        expect(find.price).toEqual(550)
+        find = await Location.findById(item1._id);
+        expect(find.price).toEqual(item1.price)
     })
 });
