@@ -217,7 +217,7 @@ describe("PATCH Routes", () => {
                 latitude: 43.49041374273173,
                 longtitude: -80.54281045857041,
             },
-            price: item1.price,
+            price: item2.price,
             utilities: {
                 hydroIncluded: true,
                 hydroPrice: 45,
@@ -241,6 +241,6 @@ describe("PATCH Routes", () => {
         const res = await request(app).patch(`/api/location/update/${item1._id}`).send(updatedData)
         expect(res.statusCode).toEqual(200)
         find = await Inventory.findById(item1._id);
-        expect(find.price).toEqual(450)
+        expect(find.price).toEqual(550)
     })
 });

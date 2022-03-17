@@ -131,12 +131,12 @@ router.route('/update/:id').patch(async (req, res) => {
         const { id } = req.params;
 
         // Variables 
-        let foundLocation = await Location.findById(id);
+        let foundLocation = await Location.find({"name": name});
 
         if (foundLocation != null) {
-            console.log("Error: Location ID does not exist")
+            console.log("Error: Location name does not exist")
         } else {
-            console.log("Location ID was found")
+            console.log("Location name was found")
             foundLocation.name = name;
             foundLocation.description = description;
             foundLocation.numberOfBathrooms = numberOfBathrooms;
