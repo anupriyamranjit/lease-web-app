@@ -38,8 +38,5 @@ const schema = new mongoose.Schema({
 });
 
 const Location = mongoose.model("Location", schema);
-test.save(function (err) {
-  if (err) return console.log(err)
-});
 
 module.exports = Location;
