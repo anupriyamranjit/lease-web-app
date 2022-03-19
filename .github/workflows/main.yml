@@ -24,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
+        working-directory: ./node-server
         with:
           email: ${{ secrets.HEROKU_EMAIL }}
           heroku_api_key: ${{ secrets.HEROKU_KEY }}
