@@ -166,8 +166,6 @@ router.route('/update/:id').patch(async (req, res) => {
             foundLocation.other.parkingPrice = parkingPrice;
             foundLocation.other.furnitureIncluded = furnitureIncluded;
             foundLocation.other.other = other;
-            console.log("Before the save");
-            console.log(foundLocation.price, price);
             await foundLocation.save();
         }
     } catch (e) {
