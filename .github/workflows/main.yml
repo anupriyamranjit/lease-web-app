@@ -23,8 +23,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
+      - working-directory: ./node-server
       - uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
-        working-directory: ./node-server
         with:
           email: ${{ secrets.HEROKU_EMAIL }}
           heroku_api_key: ${{ secrets.HEROKU_KEY }}
