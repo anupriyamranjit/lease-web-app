@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # possibly setup node action here...
+      # possibly cache of node modules action here...
+      # build steps here...
+      - uses: onekiloparsec/heroku-node-deploy-subfolder@v1.1.0
+        with:
+          api_key: ${{secrets.HEROKU_KEY}}
+          email: ${{secrets.HEROKU_EMAIL}}
+          app_name: lease-web-app
+          heroku_branch: "main"
+          subfolder: "node-server"
