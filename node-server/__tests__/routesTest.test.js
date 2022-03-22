@@ -2,42 +2,7 @@ const request = require("supertest");
 const app = require("../app");
 const Location = require('../model/location.model')
 const TestModel = require('../model/test.model')
-
-const testLoc = {
-    name: 'CMH',
-    description: 'Waterloo Residence Builing',
-    numberOfBathrooms: 0,
-    numberOfBedrooms: 0,
-    address: {
-        streetNumber: 165,
-        streetName: 'University Avenue W',
-        city: 'Waterloo',
-        province: 'Ontario',
-        postalCode: 'N2L 3E8',
-        latitude: 43.49041374273173,
-        longtitude: -80.54281045857041,
-    },
-    price: 450,
-    utilities: {
-        hydroIncluded: true,
-        hydroPrice: 45,
-        electricalIncluded: false,
-        electricalPrice: null,
-        laundryIncluded: true,
-        laundryPrice: 23,
-        internetIncluded: false,
-        internetPrice: null,
-        totalUtilitiesPrice: 68
-    },
-    other: {
-        hasGym: true,
-        hasBikeRake: true,
-        hasParking: false,
-        parkingPrice: 0,
-        furnitureIncluded: true,
-        other: 'Hi, welcome to CMH'
-    }
-}
+const data = require("../tests/testLocations");
 
 describe("GET Routes", () => {
     beforeAll(async () => {
@@ -50,7 +15,8 @@ describe("GET Routes", () => {
     })
 
     it('GET Location Single', async () => {
-        const item = await Location.create(testLoc)
+        const item = await Location.create(data.locations[0]);
+        console.log(data.locations[1])
         const res = await request(app).get(`/api/location/${item._id}`)
         expect(JSON.parse(res.text).name).toBe("CMH")
         expect(JSON.parse(res.text).description).toBe("Waterloo Residence Builing")
@@ -91,7 +57,7 @@ describe("POST Routes", () => {
     it('POST New Location', async () => {
         const res = await request(app)
             .post('/api/location/addLocation')
-            .send(testLoc)
+            .send(data.locations[1]);
 
         expect(res.statusCode).toEqual(200)
         const findLoc = await Location.find({ name: "CMH" })
@@ -107,10 +73,32 @@ describe("DELETE Routes", () => {
     });
 
     it('DELETE Location', async () => {
-        const loc = await Location.create(testLoc)
+        const loc = await Location.create(data.locations[0]);
         const res = await request(app).delete(`/api/location/delete/${loc._id}`)
         expect(res.statusCode).toEqual(200)
         const findLoc = await Location.findById(loc._id)
         expect(findLoc).toBeNull()
     });
+});
+
+
+describe("PATCH Routes", () => {
+    beforeAll(async () => {
+        await Location.deleteMany();
+    });
+    it("Patch Name and Merge", async () => {
+        const item1 = await Location.create(data.locations[0]);
+        const item2 = await Location.create(data.locations[1]);
+        const res = await request(app).patch(`/api/location/update/${item1._id}`).send(data.locations[3])
+        expect(res.statusCode).toEqual(200)
+        find = await Location.findById(item2._id);
+        expect(find.price).toEqual(data.locations[1].price)
+    })
+    it("Patch Name and No Merge", async () => {
+        const item1 = await Location.create(data.locations[0]);
+        const res = await request(app).patch(`/api/location/update/${item1._id}`).send(data.locations[4])
+        expect(res.statusCode).toEqual(200)
+        find = await Location.findById(item1._id);
+        expect(find.price).toEqual(item1.price)
+    })
 });
