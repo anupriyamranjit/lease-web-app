@@ -2,23 +2,18 @@
 
 const express = require('express');
 const database = require('./database/database');
-const testRouter = require('./api/test');
 const locationRouter = require('./api/location')
+const adminRouter = require('./api/admin')
+const bodyParser = require('body-parser')
 
 
 // Constants
-const PORT = 8080;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 8080;
 
 // App
 const app = express();
-app.get('/', (req, res) => {
-  res.send('Hello World 7');
-});
-app.use('/api/test', testRouter);
+app.use(bodyParser.json())
 app.use('/api/location', locationRouter);
+app.use('/api/admin', adminRouter);
 
-
-
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+app.listen(PORT);
