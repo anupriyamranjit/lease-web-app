@@ -5,9 +5,11 @@
     "author": "Team",
     "main": "app.js",
     "scripts": {
-        "start": "nodemon --legacy-watch app.js"
+        "start": "node app.js",
+        "nodemon": "nodemon --legacy-watch app.js"
     },
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "dotenv": "^10.0.0",
         "express": "^4.16.1",
         "mongoose": "^6.1.4",
