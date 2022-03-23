@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt  = require('jsonwebtoken');
 
@@ -35,8 +34,8 @@ userSchema.methods.generateAuthToken = async function () {
     return token
 }
 
-userSchema.statics.findByCredentials = async (email, password) => {
-    const user = await User.findOne({ name })
+userSchema.statics.findByCredentials = async (name, password) => {
+    const user = await Admin.findOne({ name })
     if(!user){
         throw new Error("Unable to login")
     }
