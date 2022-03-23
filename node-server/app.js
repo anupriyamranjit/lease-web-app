@@ -9,7 +9,6 @@ const bodyParser = require('body-parser')
 
 // Constants
 const PORT = process.env.PORT || 8080;
-const HOST = '0.0.0.0';
 
 // App
 const app = express();
@@ -17,8 +16,4 @@ app.use(bodyParser.json())
 app.use('/api/location', locationRouter);
 app.use('/api/admin', adminRouter);
 
-
-
-
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+app.listen(PORT);
