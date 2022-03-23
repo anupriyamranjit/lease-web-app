@@ -2,6 +2,16 @@ const express = require('express');
 const Admin = require('../model/admin.model')
 const router = express.Router();
 
+router.get('/healthcheck', async (req, res) => {
+    try {
+        res.status(200).json({ message: "Healthy" })
+
+    } catch (e) {
+        console.log(e)
+        res.status(400).send(e)
+    }
+})
+
 router.post('/users', async (req, res) => {
     const user = new Admin(req.body);
     try {
